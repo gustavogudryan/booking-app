@@ -22,16 +22,26 @@
   margin-bottom: 50px;
 }
 
+
 .headerListItem {
   display: flex;
+  padding: 10px;
   align-items: center;
   gap: 10px;
+  cursor: pointer;
+  border-radius: 20px;
+  transition: all 0.2s;
+}
+
+.headerListItem:hover {
+  border-radius: 20px;
+  background-color: #1c4ca5
 }
 
 .headerListItem.active {
   border: 1px solid white;
-  padding: 10px;
   border-radius: 20px;
+  background-color: #1c4ca5
 }
 
 .headerDesc {
@@ -45,9 +55,13 @@
   border: none;
   padding: 10px;
   cursor: pointer;
-  border-radius: 5px;
+  border-radius: 3px;
+  transition: all 0.2s;
 }
 
+.headerBtn:hover {
+  background-color: #1c4ca5;
+}
 
 .headerSearch {
   height: 30px;
@@ -77,7 +91,6 @@
 .headerSearchInput {
   border: none;
   outline: none;
-  
 }
 
 .headerSearchText {
