@@ -1,0 +1,32 @@
+{
+    "translation":{
+        "titles": {
+            "newHere": "New here?",
+            "oneOfUs": "One of us?"
+        },
+        "messages": {
+           "newHereMessage":
+            "Sign up and stay on top of all offers around the world!",
+            "oneOfUsMessage":
+             "If you already have your account, just login!",
+            "signInMessage": "Or Sign in with social platforms.",
+            "signUpMessage": "Or Sign Up with social platforms.",
+            "thanks": "Thanks",
+            "loginMessage": "Successfully logged in, enjoy",
+            "registerMessage": "Your account has been successfully created"
+        },
+        "placeholders": {
+            "username": "Username",
+            "email": "Email",
+            "password": "Password"
+        },
+        "buttons": {
+            "signIn": "Sign In",
+            "signUp": "Sign Up",
+            "login": "Login"
+        },
+        "error": {
+            "errorMessage": "Wrong username or password"
+        }
+    }
+}

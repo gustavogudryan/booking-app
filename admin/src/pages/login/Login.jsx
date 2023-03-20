@@ -1,7 +1,12 @@
 import React, { useContext, useState } from "react";
 import "./login.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEnvelope, faLock, faUser } from "@fortawesome/free-solid-svg-icons";
+import {
+  faEnvelope,
+  faLock,
+  faUser,
+  faXmark,
+} from "@fortawesome/free-solid-svg-icons";
 import {
   faFacebookF,
   faGoogle,
@@ -92,10 +97,15 @@ function LoginRegister() {
               onClick={handleLogin}
             />
 
-            {error && <span>{error.message}</span>}
+            {error && (
+              <span className="messageError">
+                <FontAwesomeIcon icon={faXmark} />
+                {error.message}
+              </span>
+            )}
 
             <p className="social-text">
-              MENSAGEM FODA{/*{i18n.t("messages.signInMessage")}*/}
+              ou entre com{/*{i18n.t("messages.signInMessage")}*/}
             </p>
 
             <div className="social-media">
@@ -129,7 +139,7 @@ function LoginRegister() {
               <FontAwesomeIcon icon={faEnvelope} />
               <input
                 type="email"
-                placeholder="email" //{i18n.t("placeholders.email")}
+                placeholder="Email" //{i18n.t("placeholders.email")}
               />
             </div>
 
@@ -137,14 +147,14 @@ function LoginRegister() {
               <FontAwesomeIcon icon={faLock} />
               <input
                 type="password"
-                placeholder="senha" //{i18n.t("placeholders.password")}
+                placeholder="Senha" //{i18n.t("placeholders.password")}
               />
             </div>
 
             <input
               type="submit"
               className="btn"
-              value="cadastrar" //{i18n.t("buttons.signUp")}
+              value="Cadastrar" //{i18n.t("buttons.signUp")}
             />
 
             <p className="social-text">
@@ -173,16 +183,14 @@ function LoginRegister() {
         <div className="panel left-panel">
           <div className="content">
             <h3>novo por aqui{/*{i18n.t("titles.newHere")}*/}</h3>
-            <p>
-              mensagem foda aquihahha{/*{i18n.t("messages.newHereMessage")}}*/}
-            </p>
+            <p>LOREM IPSUM{/*{i18n.t("messages.newHereMessage")}}*/}</p>
             <button
               onClick={signUpButton}
               className="btn transparent"
               id="sign-up-btn"
             >
               {" "}
-              cadastrar
+              Cadastrar
               {/* {i18n.t("buttons.signUp")} */}
             </button>
           </div>
@@ -193,16 +201,14 @@ function LoginRegister() {
         <div className="panel right-panel">
           <div className="content">
             <h3>{/*{i18n.t("titles.oneOfUs")}*/}um de nós</h3>
-            <p>
-              {/*{i18n.t("messages.oneOfUsMessage")}*/}um de nós mensagem foda
-            </p>
+            <p>{/*{i18n.t("messages.oneOfUsMessage")}*/}LOREM IPSUM</p>
             <button
               onClick={signInButton}
               className="btn transparent"
               id="sign-in-btn"
             >
               {" "}
-              login
+              Login
               {/*{i18n.t("buttons.signIn")}*/}
             </button>
           </div>

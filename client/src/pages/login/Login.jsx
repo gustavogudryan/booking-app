@@ -1,7 +1,13 @@
 import React, { useContext, useState } from "react";
 import "./login.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEnvelope, faLock, faUser } from "@fortawesome/free-solid-svg-icons";
+import {
+  faEnvelope,
+  faLock,
+  faTriangleExclamation,
+  faUser,
+  faXmark,
+} from "@fortawesome/free-solid-svg-icons";
 import {
   faFacebookF,
   faGoogle,
@@ -11,11 +17,27 @@ import {
 import { AuthContext } from "../../context/AuthContext";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-// import { i18n } from "../../translate/i18n";
+import i18n from "../../translate/i18n";
+import loginImage from "./img/loginimage.png";
+import location from "./img/location.png";
+import tick from "./img/404-tick.png";
+
+const style = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: 400,
+  bgcolor: "background.paper",
+  border: "2px solid #000",
+  boxShadow: 24,
+  p: 4,
+};
 
 function LoginRegister() {
   //change side
   const [signIn, toggle] = React.useState(false);
+  const [open, setOpen] = React.useState(false);
 
   const signUpButton = () => {
     toggle(true);
@@ -23,6 +45,14 @@ function LoginRegister() {
 
   const signInButton = () => {
     toggle(false);
+  };
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    navigate("/");
   };
 
   const [credentials, setCredentials] = useState({
@@ -44,7 +74,7 @@ function LoginRegister() {
     try {
       const res = await axios.post("/auth/login", credentials);
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });
-      navigate("/");
+      handleOpen();
     } catch (err) {
       dispatch({ type: "LOGIN_FAILURE", payload: err.response.data });
     }
@@ -53,6 +83,15 @@ function LoginRegister() {
   return (
     <div className={`container ${signIn ? "sign-up-mode" : ""}`}>
       <div className="form-container">
+        <div className={`popup ${open ? "open-popup" : ""}`}>
+          <img src={tick} alt="404-tick" />
+          <h2>{i18n.t("messages.thanks")}</h2>
+          <p>{i18n.t("messages.loginMessage")}</p>
+          <button onClick={handleClose} type="button">
+            OK
+          </button>
+        </div>
+
         <div className="signin-signup">
           <form action="#" className="sign-in-form">
             <h2 className="title">ALL YOU NEED</h2>
@@ -62,7 +101,7 @@ function LoginRegister() {
               <input
                 type="text"
                 id="username"
-                placeholder="Usuário" //{i18n.t("placeholders.username")}
+                placeholder={i18n.t("placeholders.username")}
                 onChange={handleChange}
               ></input>
             </div>
@@ -72,24 +111,27 @@ function LoginRegister() {
               <input
                 type="password"
                 id="password"
-                placeholder="Senha" //{i18n.t("placeholders.password")}
+                placeholder={i18n.t("placeholders.password")}
                 onChange={handleChange}
               ></input>
             </div>
 
             <input
               type="submit"
-              value="Login" //{i18n.t("buttons.login")}
+              value={i18n.t("buttons.login")}
               className="btn solid"
               disabled={loading}
               onClick={handleLogin}
             />
 
-            {error && <span>{error.message}</span>}
+            {error && (
+              <span className="messageError">
+                <FontAwesomeIcon icon={faTriangleExclamation} />
+                {i18n.t("error.errorMessage")}
+              </span>
+            )}
 
-            <p className="social-text">
-              MENSAGEM FODA{/*{i18n.t("messages.signInMessage")}*/}
-            </p>
+            <p className="social-text">{i18n.t("messages.signInMessage")}</p>
 
             <div className="social-media">
               <a href={<LoginRegister />} className="social-icon">
@@ -114,35 +156,30 @@ function LoginRegister() {
               <FontAwesomeIcon icon={faUser} />
               <input
                 type="text"
-                placeholder="Usuario" //{i18n.t("placeholders.username")}
+                placeholder={i18n.t("placeholders.username")}
               />
             </div>
 
             <div className="input-field">
               <FontAwesomeIcon icon={faEnvelope} />
-              <input
-                type="email"
-                placeholder="email" //{i18n.t("placeholders.email")}
-              />
+              <input type="email" placeholder={i18n.t("placeholders.email")} />
             </div>
 
             <div className="input-field">
               <FontAwesomeIcon icon={faLock} />
               <input
                 type="password"
-                placeholder="senha" //{i18n.t("placeholders.password")}
+                placeholder={i18n.t("placeholders.password")}
               />
             </div>
 
             <input
               type="submit"
               className="btn"
-              value="cadastrar" //{i18n.t("buttons.signUp")}
+              value={i18n.t("buttons.signUp")}
             />
 
-            <p className="social-text">
-              {/*{i18n.t("messages.signUpMessage")}*/}
-            </p>
+            <p className="social-text">{i18n.t("messages.signUpMessage")}</p>
 
             <div className="social-media">
               <a href={<LoginRegister />} className="social-icon">
@@ -165,42 +202,41 @@ function LoginRegister() {
       <div className="panels-container">
         <div className="panel left-panel">
           <div className="content">
-            <h3>novo por aqui{/*{i18n.t("titles.newHere")}*/}</h3>
-            <p>
-              mensagem foda aquihahha{/*{i18n.t("messages.newHereMessage")}}*/}
-            </p>
+            <h3>{i18n.t("titles.newHere")}</h3>
+            <p>{i18n.t("messages.newHereMessage")}</p>
             <button
               onClick={signUpButton}
               className="btn transparent"
               id="sign-up-btn"
             >
               {" "}
-              cadastrar
-              {/* {i18n.t("buttons.signUp")} */}
+              {i18n.t("buttons.signUp")}
             </button>
           </div>
 
-          {/* <img src="img/log.svg" className="image" alt="" /> */}
+          <img src={loginImage} className="image" alt="" />
         </div>
 
         <div className="panel right-panel">
           <div className="content">
-            <h3>{/*{i18n.t("titles.oneOfUs")}*/}um de nós</h3>
-            <p>
-              {/*{i18n.t("messages.oneOfUsMessage")}*/}um de nós mensagem foda
-            </p>
+            <h3>{i18n.t("titles.oneOfUs")}</h3>
+            <p>{i18n.t("messages.oneOfUsMessage")}</p>
             <button
               onClick={signInButton}
               className="btn transparent"
               id="sign-in-btn"
             >
               {" "}
-              login
-              {/*{i18n.t("buttons.signIn")}*/}
+              {i18n.t("buttons.signIn")}
             </button>
           </div>
 
-          {/* <img src="img/register.svg" className="image" alt="" /> */}
+          <img
+            src={location}
+            style={{ width: "65%" }}
+            className="image"
+            alt=""
+          />
         </div>
       </div>
     </div>

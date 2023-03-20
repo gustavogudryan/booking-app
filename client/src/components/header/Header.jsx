@@ -51,8 +51,15 @@ const Header = ({ type }) => {
   const { dispatch } = useContext(SearchContext);
 
   const handleSearch = () => {
-    dispatch({ type: "NEW_SEARCH", payload: { destination, dates, options } });
-    navigate("/hotels", { state: { destination, dates, options } });
+    if (!destination || !dates || !options) {
+      alert("preencha todos os campos");
+    } else {
+      dispatch({
+        type: "NEW_SEARCH",
+        payload: { destination, dates, options },
+      });
+      navigate("/hotels", { state: { destination, dates, options } });
+    }
   };
 
   return (

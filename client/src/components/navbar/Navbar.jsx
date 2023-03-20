@@ -12,11 +12,15 @@ const Navbar = () => {
           <span className="logo">ALL YOU NEED</span>
         </Link>
         {user ? (
-          user.username
+          <span className="username">{user.username}</span>
         ) : (
           <div className="navItems">
-            <button className="navButton">Register</button>
-            <button className="navButton">Login</button>
+            <Link to="/login">
+              <button className="navButton">Register</button>
+            </Link>
+            <Link to="/login">
+              <button className="navButton">Login</button>
+            </Link>
           </div>
         )}
       </div>

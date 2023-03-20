@@ -1,0 +1,32 @@
+{
+    "translation":{
+        "titles": {
+            "newHere": "Novo por aqui?",
+            "oneOfUs": "Um de nós?"
+        },
+        "messages": {
+           "newHereMessage":
+            "Se cadastre e fique por dentro de todas as ofertas pelo mundo!",
+            "oneOfUsMessage":
+             "Se já possui sua conta, apenas efetue o login!",
+            "signInMessage": "Ou entre com alguma rede social.",
+            "signUpMessage": "Ou cadastre com alguma rede social.",
+            "thanks": "Obrigado",
+            "loginMessage": "Login efetuado com sucesso, aproveite",
+            "registerMessage": "Sua conta foi criada com sucesso"
+        },
+        "placeholders": {
+            "username": "Usuário",
+            "email": "E-mail",
+            "password": "Senha"
+        },
+        "buttons": {
+            "signIn": "Entrar",
+            "signUp": "Criar conta",
+            "login": "Login"
+        },
+        "error": {
+            "errorMessage": "Usuário ou senha incorretos"
+        }
+    }
+}
