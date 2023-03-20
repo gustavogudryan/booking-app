@@ -1,9 +1,8 @@
 .navbar{
-  height: 50px;
+  height: 80px;
   background-color: #003580;
   display: flex;
   justify-content: center;
-  border-bottom:2px solid #febb02;;
 }
 
 .navContainer{
@@ -40,4 +39,43 @@
 
 .username{
   text-transform: capitalize;
+}
+
+.headerListnav{
+  display: flex;
+  gap: 40px;
+}
+
+.headerListItemnav {
+  display: flex;
+  padding: 10px;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  border-radius: 20px;
+  transition: all 0.2s;
+}
+
+.headerListItemnav:hover {
+  border-radius: 20px;
+  background-color: #1c4ca5
+}
+
+.headerListItemnav.active {
+  border: 1px solid white;
+  border-radius: 20px;
+  background-color: #1c4ca5
+}
+
+.headernav{
+  background: #003580;
+  color: white;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+.headerContainernav {
+  width: 100%;
+  max-width: 1024px;
+  margin-bottom: 20px;
 }

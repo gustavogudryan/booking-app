@@ -1,11 +1,7 @@
 import {
   faBed,
   faCalendarDays,
-  faCar,
-  faCloud,
-  faLocationDot,
   faPerson,
-  faPlane,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./header.css";
@@ -68,28 +64,6 @@ const Header = ({ type }) => {
           type === "list" ? "headerContainer listMode" : "headerContainer"
         }
       >
-        <div className="headerList">
-          <div className="headerListItem active">
-            <FontAwesomeIcon icon={faBed} />
-            <span>Hospedagens</span>
-          </div>
-          <div className="headerListItem">
-            <FontAwesomeIcon icon={faPlane} />
-            <span>Voos</span>
-          </div>
-          <div className="headerListItem">
-            <FontAwesomeIcon icon={faCar} />
-            <span>Aluguel de carros</span>
-          </div>
-          <div className="headerListItem">
-            <FontAwesomeIcon icon={faLocationDot} />
-            <span>Ache por perto</span>
-          </div>
-          <div className="headerListItem">
-            <FontAwesomeIcon icon={faCloud} />
-            <span>Clima</span>
-          </div>
-        </div>
         {type !== "list" && (
           <>
             <h1 className="headerTitle">Precisando de algo para sua viagem?</h1>
