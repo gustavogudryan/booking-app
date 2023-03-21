@@ -50,5 +50,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:3030/api"
+  "proxy": "booking-app-desisto.vercel.app"
 }
